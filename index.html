@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Виктор Михайлов — портфолио</title>
+  <meta name="description" content="Портфолио Виктора Михайлова. Портрет, семья, свадьбы, репортаж, архитектура и пейзаж. Студия в Солнечногорске." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Приветственный лендинг-экран (показывается при первом заходе, можно скрыть навсегда) -->
+  <div class="welcome" id="welcome" aria-hidden="true">
+    <div class="welcome__overlay" data-welcome-close aria-label="Закрыть приветственный экран"></div>
+    <section class="welcome__panel" role="dialog" aria-modal="true" aria-label="Добро пожаловать">
+      <div class="welcome__badge">Портфолио фотографа</div>
+      <h2 class="welcome__title">Добро пожаловать</h2>
+      <p class="welcome__text">
+        Здесь — отобранные работы и быстрый способ записаться на съёмку. Листайте портфолио, а если хотите — сразу перейдём к контактам.
+      </p>
+
+      <div class="welcome__actions">
+        <button class="btn btn--primary" type="button" id="welcomeEnter">Войти на сайт</button>
+        <a class="btn btn--secondary" href="#contact" id="welcomeToContact">Сразу к контактам</a>
+      </div>
+
+      <label class="welcome__remember">
+        <input class="welcome__checkbox" type="checkbox" id="welcomeRemember" />
+        <span>Больше не показывать</span>
+      </label>
+
+      <button class="welcome__close" type="button" data-welcome-close aria-label="Закрыть">&times;</button>
+    </section>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="На главную">
+        <span class="brand__mark" aria-hidden="true">📷</span>
+        <span class="brand__text">Виктор Михайлов</span>
+      </a>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#gallery" class="nav__link">Портфолио</a>
+        <a href="#about" class="nav__link">Обо мне</a>
+        <a href="#contact" class="nav__link">Контакты</a>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn btn--primary" href="#contact">Записаться</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero__content">
+          <h1 class="hero__title">«Я даю кадру дышать. Не перегружаю.»</h1>
+          <p class="hero__subtitle">
+            Фотограф из Солнечногорска (Московская область). Снимаю портрет, семью, свадьбу, репортаж, архитектуру и пейзажи
+            — с живыми эмоциями и аккуратной обработкой.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#gallery">Смотреть работы</a>
+            <a class="btn btn--secondary" href="#contact">Узнать свободные даты</a>
+          </div>
+          <div class="hero__meta">
+            <span class="chip">Портрет • Семья</span>
+            <span class="chip">Свадьбы • Репортаж</span>
+            <span class="chip">Архитектура • Пейзаж</span>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-card__bg"></div>
+            <div class="hero-card__content">
+              <div class="hero-card__title">Фотостудия в Солнечногорске</div>
+              <div class="hero-card__stat">
+                <span class="hero-card__num">6+</span>
+                <span class="hero-card__label">жанров</span>
+              </div>
+              <div class="hero-card__note">Одинаково уверенно работаю в разных жанрах и условиях</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Портфолио</h2>
+          <p class="section-subtitle">Нажмите на фото, чтобы посмотреть в увеличении.</p>
+        </div>
+
+        <!-- Фильтр портфолио: быстро отобрать нужный жанр -->
+        <div class="filters" id="galleryFilters" role="group" aria-label="Фильтр портфолио">
+          <button class="filters__btn is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
+          <button class="filters__btn" type="button" data-filter="portrait" aria-pressed="false">Портрет</button>
+          <button class="filters__btn" type="button" data-filter="family" aria-pressed="false">Семья</button>
+          <button class="filters__btn" type="button" data-filter="wedding" aria-pressed="false">Свадьба</button>
+          <button class="filters__btn" type="button" data-filter="report" aria-pressed="false">Репортаж</button>
+          <button class="filters__btn" type="button" data-filter="architecture" aria-pressed="false">Архитектура</button>
+          <button class="filters__btn" type="button" data-filter="landscape" aria-pressed="false">Пейзаж</button>
+        </div>
+
+        <div class="photo-grid" id="photoGrid">
+          <figure class="photo" data-category="portrait">
+            <button
+              class="photo__btn"
+              type="button"
+              data-full="https://i.postimg.cc/3RW4RhZ3/Vita-v-fotostudii-(v-rabotu).png"
+              data-caption="Фото 1"
+            >
+              <img
+                class="photo__img"
+                src="https://i.postimg.cc/3RW4RhZ3/Vita-v-fotostudii-(v-rabotu).png"
+                alt="Фото 1"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="photo__caption">Фото 1</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button
+              class="photo__btn"
+              type="button"
+              data-full="https://i.postimg.cc/VNnZhytq/7.jpg"
+              data-caption="Фото 2"
+            >
+              <img
+                class="photo__img"
+                src="https://i.postimg.cc/VNnZhytq/7.jpg"
+                alt="Фото 2"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="photo__caption">Фото 2</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="landscape">
+            <button
+              class="photo__btn"
+              type="button"
+              data-full="https://i.postimg.cc/SQvLcTXG/3.jpg"
+              data-caption="Фото 3"
+            >
+              <img
+                class="photo__img"
+                src="https://i.postimg.cc/SQvLcTXG/3.jpg"
+                alt="Фото 3"
+                loading="lazy"
+              />
+            </button>
+            <figcaption class="photo__caption">Фото 3</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section section--alt">
+      <div class="container about">
+        <div class="about__left">
+          <h2 class="section-title">Обо мне</h2>
+          <p class="about__text">
+            Меня зовут <strong>Виктор Михайлов</strong>. Я многогранный фотограф: снимаю портреты, семью, свадьбы, репортажи,
+            архитектуру и пейзажи — и каждый раз строю работу вокруг человека и смысла кадра.
+          </p>
+          <div class="about__list">
+            <div class="about-item">
+              <div class="about-item__title">Что снимаю</div>
+              <div class="about-item__text">Портрет, семья, свадьба, репортаж, архитектура, пейзаж</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">Авторский стиль</div>
+              <div class="about-item__text">«Я даю кадру дышать. Не перегружаю, не ломаю, не маскирую человека.
+                Фотография должна оставаться живой»</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">Чем отличаюсь</div>
+              <div class="about-item__text">
+                Не копирую тренды — адаптирую под человека. Уверенно работаю в разных жанрах.
+                Быстро выстраиваю контакт и не теряюсь в нестандартных условиях.
+              </div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">Ответственность за результат</div>
+              <div class="about-item__text">Отвечаю за результат, а не за «попробуем»</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="about__right">
+          <div class="mini-card">
+            <div class="mini-card__title">Быстрые шаги</div>
+            <div class="about-item__text" style="margin-bottom: 10px;">
+              Работаю в студии и выезжаю по Московской области.
+              Адрес студии: г. Солнечногорск, ул. Тельнова, дом 3/2.
+            </div>
+            <ol class="mini-card__steps">
+              <li>Вы пишете/звоните.</li>
+              <li>Обсуждаем стиль и даты.</li>
+              <li>Проводим съёмку и согласуем результат.</li>
+            </ol>
+            <a class="btn btn--primary btn--full" href="#contact">Написать мне</a>
+            <a class="link" href="#gallery">Сначала посмотреть портфолио</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">Контакты</h2>
+          <p class="section-subtitle">Оставьте сообщение — отвечу в ближайшее время. Студия в Солнечногорске.</p>
+        </div>
+
+        <div class="contact">
+          <div class="contact__info">
+            <div class="info-card">
+              <div class="info-card__label">Почта</div>
+              <a class="info-card__value" href="mailto:toursol8@gmail.com">toursol8@gmail.com</a>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Телефон</div>
+              <a class="info-card__value" href="tel:+79859975472">+7 (985) 997-54-72</a>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Адрес студии</div>
+              <a
+                class="info-card__value"
+                href="https://yandex.ru/maps/?text=%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D0%BE%D0%B3%D0%BE%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B2%D0%B0%2C%20%D0%B4%D0%BE%D0%BC%203%2F2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                г. Солнечногорск, ул. Тельнова, дом 3/2
+              </a>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Соцсети</div>
+              <a class="info-card__value" href="https://instagram.com/yourname" target="_blank" rel="noreferrer">instagram.com/yourname</a>
+            </div>
+          </div>
+
+          <form class="contact__form" id="contactForm">
+            <div class="field-row">
+              <label class="field">
+                <span class="field__label">Имя</span>
+                <input class="field__input" name="name" type="text" autocomplete="name" required />
+              </label>
+              <label class="field">
+                <span class="field__label">Email</span>
+                <input class="field__input" name="email" type="email" autocomplete="email" required />
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Сообщение</span>
+              <textarea class="field__input field__textarea" name="message" rows="5" required
+                placeholder="Например: портрет/семья/свадьба, желаемые даты, район/локация (Солнечногорск или выезд), стиль"></textarea>
+            </label>
+
+            <button class="btn btn--primary btn--full" type="submit">Отправить</button>
+            <p class="form-hint">
+              Данные уйдут через ваш почтовый клиент (без сервера).
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer__left">© <span id="year"></span> Виктор Михайлов. Все права защищены.</div>
+      <div class="footer__right">
+        <a class="link" href="#home">Наверх</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <button class="modal__overlay" type="button" data-close aria-label="Закрыть"></button>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Просмотр фото">
+      <button class="modal__close" type="button" data-close aria-label="Закрыть">&times;</button>
+      <img id="modalImg" class="modal__img" alt="" />
+      <figcaption id="modalCaption" class="modal__caption"></figcaption>
+    </div>
+  </div>
+
+  <!-- Кнопка переключения темы (фиксирована в правом нижнем углу) -->
+  <button
+    class="theme-toggle"
+    id="themeToggle"
+    type="button"
+    aria-label="Переключить тему"
+    title="Сменить тему"
+  >
+    🌙
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
