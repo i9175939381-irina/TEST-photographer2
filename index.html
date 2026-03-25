@@ -67,9 +67,9 @@
             <a class="btn btn--secondary" href="#contact">Узнать свободные даты</a>
           </div>
           <div class="hero__meta">
-            <span class="chip">Портрет • Семья</span>
+            <span class="chip">Портрет • Семья/дети</span>
             <span class="chip">Свадьбы • Репортаж</span>
-            <span class="chip">Архитектура • Пейзаж</span>
+            <span class="chip">Архитектура • Пейзаж • Животные</span>
           </div>
         </div>
         <div class="hero__visual" aria-hidden="true">
@@ -99,8 +99,9 @@
         <div class="filters" id="galleryFilters" role="group" aria-label="Фильтр портфолио">
           <button class="filters__btn is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
           <button class="filters__btn" type="button" data-filter="portrait" aria-pressed="false">Портрет</button>
-          <button class="filters__btn" type="button" data-filter="family" aria-pressed="false">Семья</button>
+          <button class="filters__btn" type="button" data-filter="family-children" aria-pressed="false">Семья/дети</button>
           <button class="filters__btn" type="button" data-filter="wedding" aria-pressed="false">Свадьба</button>
+          <button class="filters__btn" type="button" data-filter="animals" aria-pressed="false">Животные</button>
           <button class="filters__btn" type="button" data-filter="report" aria-pressed="false">Репортаж</button>
           <button class="filters__btn" type="button" data-filter="architecture" aria-pressed="false">Архитектура</button>
           <button class="filters__btn" type="button" data-filter="landscape" aria-pressed="false">Пейзаж</button>
@@ -129,16 +130,16 @@
               class="photo__btn"
               type="button"
               data-full="https://i.postimg.cc/VNnZhytq/7.jpg"
-              data-caption="Фото 2"
+              data-caption="Свадьба 1"
             >
               <img
                 class="photo__img"
                 src="https://i.postimg.cc/VNnZhytq/7.jpg"
-                alt="Фото 2"
+                alt="Свадьба 1"
                 loading="lazy"
               />
             </button>
-            <figcaption class="photo__caption">Фото 2</figcaption>
+            <figcaption class="photo__caption">Свадьба 1</figcaption>
           </figure>
 
           <figure class="photo" data-category="landscape">
@@ -157,6 +158,97 @@
             </button>
             <figcaption class="photo__caption">Фото 3</figcaption>
           </figure>
+
+          <figure class="photo" data-category="animals">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/pW8nLnfk/174.jpg" data-caption="Животные 1">
+              <img class="photo__img" src="https://i.postimg.cc/pW8nLnfk/174.jpg" alt="Животные 1" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Животные 1</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="animals">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/s3yBw84h/017.jpg" data-caption="Животные 2">
+              <img class="photo__img" src="https://i.postimg.cc/s3yBw84h/017.jpg" alt="Животные 2" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Животные 2</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/HpNQxgfV/147.jpg" data-caption="Свадьба 2">
+              <img class="photo__img" src="https://i.postimg.cc/HpNQxgfV/147.jpg" alt="Свадьба 2" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 2</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/LH33xL1r/102.jpg" data-caption="Свадьба 3">
+              <img class="photo__img" src="https://i.postimg.cc/LH33xL1r/102.jpg" alt="Свадьба 3" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 3</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/MqLPB771/074.jpg" data-caption="Свадьба 4">
+              <img class="photo__img" src="https://i.postimg.cc/MqLPB771/074.jpg" alt="Свадьба 4" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 4</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/hD0ZQNsd/072.jpg" data-caption="Свадьба 5">
+              <img class="photo__img" src="https://i.postimg.cc/hD0ZQNsd/072.jpg" alt="Свадьба 5" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 5</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/GLPVJ4Lk/060.jpg" data-caption="Свадьба 6">
+              <img class="photo__img" src="https://i.postimg.cc/GLPVJ4Lk/060.jpg" alt="Свадьба 6" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 6</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/rqbB86Z8/057.jpg" data-caption="Свадьба 7">
+              <img class="photo__img" src="https://i.postimg.cc/rqbB86Z8/057.jpg" alt="Свадьба 7" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 7</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/HYG1tGbh/047.jpg" data-caption="Свадьба 8">
+              <img class="photo__img" src="https://i.postimg.cc/HYG1tGbh/047.jpg" alt="Свадьба 8" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 8</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4s14N3Vq/029.jpg" data-caption="Свадьба 9">
+              <img class="photo__img" src="https://i.postimg.cc/4s14N3Vq/029.jpg" alt="Свадьба 9" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 9</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4frytF3H/019.jpg" data-caption="Свадьба 10">
+              <img class="photo__img" src="https://i.postimg.cc/4frytF3H/019.jpg" alt="Свадьба 10" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Свадьба 10</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="family-children">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4XZwkXTq/137.jpg" data-caption="Семья/дети 1">
+              <img class="photo__img" src="https://i.postimg.cc/4XZwkXTq/137.jpg" alt="Семья и дети 1" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Семья/дети 1</figcaption>
+          </figure>
+
+          <figure class="photo" data-category="family-children">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/qJYQ9nk3/135.jpg" data-caption="Семья/дети 2">
+              <img class="photo__img" src="https://i.postimg.cc/qJYQ9nk3/135.jpg" alt="Семья и дети 2" loading="lazy" />
+            </button>
+            <figcaption class="photo__caption">Семья/дети 2</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -172,7 +264,7 @@
           <div class="about__list">
             <div class="about-item">
               <div class="about-item__title">Что снимаю</div>
-              <div class="about-item__text">Портрет, семья, свадьба, репортаж, архитектура, пейзаж</div>
+              <div class="about-item__text">Портрет, семья/дети, свадьба, репортаж, архитектура, пейзаж, животные</div>
             </div>
             <div class="about-item">
               <div class="about-item__title">Авторский стиль</div>
