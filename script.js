@@ -202,11 +202,26 @@
       }
 
       const formData = new FormData(contactForm);
+      const payload = {
+        name: String(formData.get("name") || ""),
+        email: String(formData.get("email") || ""),
+        message: String(formData.get("message") || ""),
+        _subject: String(formData.get("_subject") || "Новая заявка с сайта фотографа"),
+        _captcha: "false",
+        _template: "table",
+      };
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 12000);
       try {
         const response = await fetch("https://formsubmit.co/ajax/toursol8@gmail.com", {
           method: "POST",
-          headers: { Accept: "application/json" },
-          body: formData,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
         });
 
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -214,8 +229,13 @@
         alert("Сообщение отправлено. Спасибо! Я свяжусь с вами в ближайшее время.");
         contactForm.reset();
       } catch (err) {
-        alert("Не удалось отправить сообщение из-за временной ошибки сети. Пожалуйста, попробуйте еще раз через 1-2 минуты.");
+        const statusMessage = err && err.message ? ` (${err.message})` : "";
+        alert(
+          `Не удалось отправить сообщение через форму${statusMessage}. ` +
+          "Сервис отправки временно недоступен. Попробуйте еще раз чуть позже или свяжитесь по почте toursol8@gmail.com / телефону +7 (985) 997-54-72."
+        );
       } finally {
+        clearTimeout(timeoutId);
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = originalBtnText || "Отправить";
