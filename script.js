@@ -93,9 +93,10 @@
 
   const openModal = ({ src, caption }) => {
     if (!modal || !modalImg) return;
+    const cleanCaption = String(caption || "").replace(/\s+\d+$/, "").trim();
     modalImg.src = src;
-    modalImg.alt = caption || "Фото";
-    modalCaption.textContent = caption || "";
+    modalImg.alt = cleanCaption || "Фото";
+    modalCaption.textContent = cleanCaption || "";
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
@@ -187,30 +188,7 @@
     });
   };
 
-  // Contact form -> mailto (no backend required)
-  const form = $("#contactForm");
-  if (form) {
-    const emailTo = "toursol8@gmail.com";
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const data = new FormData(form);
-      const name = String(data.get("name") || "");
-      const email = String(data.get("email") || "");
-      const message = String(data.get("message") || "");
-
-      const subject = `Запрос на фотосъёмку — Виктор Михайлов (от ${name})`;
-      const body = [
-        `Имя: ${name}`,
-        `Email: ${email}`,
-        "",
-        message,
-      ].join("\n");
-
-      const mailto = `mailto:${encodeURIComponent(emailTo)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailto;
-    });
-  }
+  // Contact form submits directly to FormSubmit endpoint in HTML action.
 
   // Close modal on click outside dialog (overlay already has data-close, but keep it safe)
   if (modal) {

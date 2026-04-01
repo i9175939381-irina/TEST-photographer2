@@ -419,6 +419,7 @@ body{
   color: rgba(255,255,255,.78);
   font-weight: 700;
   font-size: 14px;
+  display: none;
 }
 
 .about{
@@ -678,7 +679,6 @@ body{
 [data-theme="light"] .hero-card{ border-color: rgba(24,32,51,.14); background: rgba(255,255,255,.76); }
 [data-theme="light"] .hero-card__title{ color: #25324d; }
 [data-theme="light"] .hero-card__label,
-[data-theme="light"] .photo__caption,
 [data-theme="light"] .form-hint,
 [data-theme="light"] .footer-inner,
 [data-theme="light"] .modal__caption{ color: rgba(24,32,51,.72); }

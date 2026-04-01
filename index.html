@@ -338,7 +338,15 @@
             </div>
           </div>
 
-          <form class="contact__form" id="contactForm">
+          <form
+            class="contact__form"
+            id="contactForm"
+            action="https://formsubmit.co/toursol8@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="Новая заявка с сайта фотографа" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
             <div class="field-row">
               <label class="field">
                 <span class="field__label">Имя</span>
@@ -358,7 +366,7 @@
 
             <button class="btn btn--primary btn--full" type="submit">Отправить</button>
             <p class="form-hint">
-              Данные уйдут через ваш почтовый клиент (без сервера).
+              Сообщение отправится напрямую на почту фотографа: toursol8@gmail.com.
             </p>
           </form>
         </div>
