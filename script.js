@@ -188,7 +188,41 @@
     });
   };
 
-  // Contact form submits directly to FormSubmit endpoint in HTML action.
+  // Contact form: background submit for any visitor (no mail client required).
+  const contactForm = $("#contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Отправка...";
+      }
+
+      const formData = new FormData(contactForm);
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/toursol8@gmail.com", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: formData,
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        alert("Сообщение отправлено. Спасибо! Я свяжусь с вами в ближайшее время.");
+        contactForm.reset();
+      } catch (err) {
+        alert("Не удалось отправить сообщение из-за временной ошибки сети. Пожалуйста, попробуйте еще раз через 1-2 минуты.");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText || "Отправить";
+        }
+      }
+    });
+  }
 
   // Close modal on click outside dialog (overlay already has data-close, but keep it safe)
   if (modal) {
