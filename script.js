@@ -214,7 +214,7 @@
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 12000);
       try {
-        const response = await fetch("https://formsubmit.co/ajax/toursol8@gmail.com", {
+        const response = await fetch("https://formsubmit.co/ajax/mik-viktor@yandex.ru", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -232,7 +232,7 @@
         const statusMessage = err && err.message ? ` (${err.message})` : "";
         alert(
           `Не удалось отправить сообщение через форму${statusMessage}. ` +
-          "Сервис отправки временно недоступен. Попробуйте еще раз чуть позже или свяжитесь по почте toursol8@gmail.com / телефону +7 (985) 997-54-72."
+          "Сервис отправки временно недоступен. Попробуйте еще раз чуть позже или свяжитесь по почте mik-viktor@yandex.ru / телефону +7 (985) 997-54-72."
         );
       } finally {
         clearTimeout(timeoutId);
