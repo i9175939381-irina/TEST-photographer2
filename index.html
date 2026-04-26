@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
   <!-- ?v= обновляйте при изменении CSS/JS, чтобы браузер не показывал старый кэш -->
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -37,7 +37,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="На главную">
-        <span class="brand__mark" aria-hidden="true">📷</span>
+        <span class="brand__mark icon-glow" aria-hidden="true">📷</span>
         <span class="brand__text font-display">Виктор Михайлов</span>
       </a>
       <nav class="nav" aria-label="Основная навигация">
@@ -47,7 +47,7 @@
         <a href="#contact" class="nav__link">Контакты</a>
       </nav>
       <div class="header-cta">
-        <a class="btn btn--primary" href="#contact">Записаться</a>
+        <a class="btn btn--primary" href="#contactForm">Записаться</a>
       </div>
     </div>
   </header>
@@ -55,7 +55,7 @@
   <main id="main">
     <section id="home" class="hero">
       <div class="container hero-inner">
-        <div class="hero__content reveal" data-reveal>
+        <div class="hero__content reveal text-glow-zone" data-reveal>
           <h1 class="hero__title font-display">
             Я даю кадру дышать.<br />Не перегружаю.
           </h1>
@@ -69,13 +69,21 @@
           </div>
           <p class="hero__location">Солнечногорск · Московская область · студия и выезд</p>
         </div>
-        <div class="hero__visual reveal" data-reveal aria-hidden="true">
+        <div class="hero__visual reveal" data-reveal>
           <div class="hero-portrait">
-            <div class="hero-portrait__frame">
-              <div class="hero-portrait__placeholder" role="img" aria-label="Портрет Виктора Михайлова — фото будет добавлено">
-                <span class="hero-portrait__initials">ВМ</span>
-                <span class="hero-portrait__hint">Фото Виктора</span>
+            <div class="hero-portrait__float">
+              <div class="hero-portrait__frame hero-portrait__frame--photo">
+                <img
+                  class="hero-portrait__img"
+                  src="1фото.png"
+                  width="800"
+                  height="1000"
+                  alt="Виктор Михайлов за съёмкой"
+                  loading="eager"
+                  decoding="async"
+                />
               </div>
+              <div class="hero-portrait__shadow" aria-hidden="true"></div>
             </div>
           </div>
         </div>
@@ -282,7 +290,7 @@
     <section id="manifest" class="section section--manifest reveal" data-reveal aria-labelledby="manifest-heading">
       <div class="container">
         <h2 id="manifest-heading" class="visually-hidden">Манифест</h2>
-        <div class="manifest">
+        <div class="manifest text-glow-zone">
           <p class="manifest__line font-display">Фотография — не про позу</p>
           <p class="manifest__line font-display">Это про момент,<br />когда человек перестаёт контролировать<br />и начинает быть собой</p>
           <p class="manifest__line font-display">Я не заставляю играть роль</p>
@@ -295,7 +303,7 @@
 
     <section id="about" class="section section--alt">
       <div class="container about-stack">
-        <div class="about-block reveal" data-reveal>
+        <div class="about-block reveal text-glow-zone" data-reveal>
           <h2 class="section-title font-display">Обо мне</h2>
           <p class="about__text about__text--lead">
             Меня зовут Виктор Михайлов. Я фотограф из Солнечногорска.
@@ -312,7 +320,7 @@
           </p>
         </div>
 
-        <div class="about-block reveal" data-reveal>
+        <div class="about-block reveal text-glow-zone" data-reveal>
           <h3 class="about-block__title font-display">Что снимаю</h3>
           <p class="about__text about__text--intro">Снимаю в разных жанрах, но в центре всегда человек</p>
           <ul class="genre-list">
@@ -322,6 +330,7 @@
             <li>Репортаж</li>
             <li>Архитектура</li>
             <li>Животные</li>
+            <li>Реклама для бизнеса</li>
           </ul>
         </div>
 
@@ -425,13 +434,33 @@
               >г. Солнечногорск, ул. Тельнова, дом 3/2</a>
             </div>
             <div class="info-card contact-card">
-              <div class="info-card__label">Соцсети</div>
-              <div class="social-links">
-                <a class="social-links__a" href="https://t.me/username" target="_blank" rel="noreferrer">Telegram</a>
-                <a class="social-links__a" href="https://vk.com/username" target="_blank" rel="noreferrer">VK</a>
-                <a class="social-links__a" href="https://instagram.com/username" target="_blank" rel="noreferrer">Instagram</a>
+              <div class="info-card__label">Max и ВКонтакте</div>
+              <div class="messenger-grid">
+                <a
+                  class="messenger-card icon-glow"
+                  href="https://max.ru/u/f9LHodD0cOL44yVbj5qSYLqe5OboR6MnSdgAsb81rw32gX7gqysgcrrHzGs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Открыть профиль Виктора в Max (новая вкладка)"
+                  aria-label="Открыть профиль Виктора в приложении или браузере Max"
+                >
+                  <img class="messenger-card__img" src="Max.png" width="200" height="200" alt="" loading="lazy" decoding="async" />
+                  <span class="messenger-card__label">Max</span>
+                </a>
+                <a class="messenger-card messenger-card--vk icon-glow" href="https://vk.com/" target="_blank" rel="noopener noreferrer">
+                  <img class="messenger-card__img" src="VK.png" width="200" height="200" alt="ВКонтакте" loading="lazy" decoding="async" />
+                  <span class="messenger-card__label">ВКонтакте</span>
+                </a>
               </div>
-              <p class="social-links__hint">Замените ссылки на ваши профили</p>
+              <p class="max-direct">
+                <a
+                  class="link max-direct__link"
+                  href="https://max.ru/u/f9LHodD0cOL44yVbj5qSYLqe5OboR6MnSdgAsb81rw32gX7gqysgcrrHzGs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Открыть профиль Виктора в Max →</a>
+              </p>
+              <p class="social-links__hint">Карточка Max и ссылка выше ведут на один профиль. При необходимости замените ссылку ВКонтакте на вашу страницу.</p>
             </div>
           </div>
 
@@ -482,8 +511,8 @@
     </div>
   </div>
 
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему" title="Сменить тему">🌙</button>
+  <button class="theme-toggle icon-glow" id="themeToggle" type="button" aria-label="Переключить тему" title="Сменить тему">🌙</button>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>

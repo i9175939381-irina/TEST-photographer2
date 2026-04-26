@@ -354,4 +354,39 @@
       if (e.key === "ArrowRight") showPhotoByOffset(1);
     });
   }
+
+  // Мягкое свечение в зонах с классом .text-glow-zone (следует за курсором, чуть сильнее при движении)
+  const glowZones = $$(".text-glow-zone");
+  if (glowZones.length && !prefersReducedMotion) {
+    glowZones.forEach((zone) => {
+      let lastX = 0;
+      let lastY = 0;
+      let lastT = performance.now();
+      zone.addEventListener("mouseenter", (e) => {
+        lastX = e.clientX;
+        lastY = e.clientY;
+        lastT = performance.now();
+      });
+      zone.addEventListener("mousemove", (e) => {
+        const r = zone.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / Math.max(1, r.width)) * 100;
+        const y = ((e.clientY - r.top) / Math.max(1, r.height)) * 100;
+        zone.style.setProperty("--gx", `${x.toFixed(2)}%`);
+        zone.style.setProperty("--gy", `${y.toFixed(2)}%`);
+
+        const t = performance.now();
+        const dt = Math.max(10, t - lastT);
+        const speed = Math.hypot(e.clientX - lastX, e.clientY - lastY) / dt;
+        lastX = e.clientX;
+        lastY = e.clientY;
+        lastT = t;
+        const boost = Math.min(1, 0.32 + speed * 5.5);
+        zone.style.setProperty("--glow-boost", String(boost));
+        zone.classList.add("is-glow-active");
+      });
+      zone.addEventListener("mouseleave", () => {
+        zone.classList.remove("is-glow-active");
+      });
+    });
+  }
 })();
