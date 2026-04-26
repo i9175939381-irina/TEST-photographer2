@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
   <!-- ?v= обновляйте при изменении CSS/JS, чтобы браузер не показывал старый кэш -->
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
@@ -73,7 +73,7 @@
         </div>
         <div class="hero__visual reveal" data-reveal>
           <div class="hero-portrait">
-            <div class="hero-portrait__float">
+            <div class="hero-portrait__stack gold-frame hero-portrait--pedestal">
               <div class="hero-portrait__frame hero-portrait__frame--photo">
                 <img
                   class="hero-portrait__img"
@@ -96,25 +96,25 @@
       <div class="container">
         <h2 id="trust-heading" class="visually-hidden">Почему со мной спокойно</h2>
         <div class="trust-grid">
-          <article class="trust-card" data-trust-card tabindex="0">
+          <article class="trust-card gold-frame" data-trust-card tabindex="0">
             <div class="trust-card__inner">
               <h3 class="trust-card__title font-display">Спокойная съёмка</h3>
               <p class="trust-card__text">Без давления и спешки</p>
             </div>
           </article>
-          <article class="trust-card" data-trust-card tabindex="0">
+          <article class="trust-card gold-frame" data-trust-card tabindex="0">
             <div class="trust-card__inner">
               <h3 class="trust-card__title font-display">Помогаю расслабиться</h3>
               <p class="trust-card__text">Подсказываю и направляю</p>
             </div>
           </article>
-          <article class="trust-card" data-trust-card tabindex="0">
+          <article class="trust-card gold-frame" data-trust-card tabindex="0">
             <div class="trust-card__inner">
               <h3 class="trust-card__title font-display">Студия и выезд</h3>
               <p class="trust-card__text">Солнечногорск и область</p>
             </div>
           </article>
-          <article class="trust-card" data-trust-card tabindex="0">
+          <article class="trust-card gold-frame" data-trust-card tabindex="0">
             <div class="trust-card__inner">
               <h3 class="trust-card__title font-display">Аккуратная обработка</h3>
               <p class="trust-card__text">Без перегруза</p>
@@ -292,7 +292,7 @@
     <section id="manifest" class="section section--manifest reveal" data-reveal aria-labelledby="manifest-heading">
       <div class="container">
         <h2 id="manifest-heading" class="visually-hidden">Манифест</h2>
-        <div class="manifest text-glow-zone">
+        <div class="manifest text-glow-zone gold-frame">
           <p class="manifest__line font-display">Фотография — не про позу</p>
           <p class="manifest__line font-display">Это про момент,<br />когда человек перестаёт контролировать<br />и начинает быть собой</p>
           <p class="manifest__line font-display">Я не заставляю играть роль</p>
@@ -305,7 +305,7 @@
 
     <section id="about" class="section section--alt">
       <div class="container about-stack">
-        <div class="about-block reveal text-glow-zone" data-reveal>
+        <div class="about-block about-block--panel gold-frame reveal text-glow-zone" data-reveal>
           <h2 class="section-title font-display">Обо мне</h2>
           <p class="about__text about__text--lead">
             Меня зовут Виктор Михайлов. Я фотограф из Солнечногорска.
@@ -322,7 +322,7 @@
           </p>
         </div>
 
-        <div class="about-block reveal text-glow-zone" data-reveal>
+        <div class="about-block about-block--panel gold-frame reveal text-glow-zone" data-reveal>
           <h3 class="about-block__title font-display">Что снимаю</h3>
           <p class="about__text about__text--intro">Снимаю в разных жанрах, но в центре всегда человек</p>
           <ul class="genre-list">
@@ -336,7 +336,7 @@
           </ul>
         </div>
 
-        <div class="about-block about-block--card reveal" data-reveal>
+        <div class="about-block about-block--card gold-frame reveal" data-reveal>
           <h3 class="about-block__title font-display">Как проходит съёмка</h3>
           <ol class="steps-list">
             <li><strong>Обсуждаем задачу</strong></li>
@@ -346,7 +346,7 @@
           <p class="steps-note">Вам не нужно уметь позировать — я помогу</p>
         </div>
 
-        <div class="about-block about-block--card reveal" data-reveal>
+        <div class="about-block about-block--card gold-frame reveal" data-reveal>
           <h3 class="about-block__title font-display">Чем отличаюсь</h3>
           <p class="about__text">Я не копирую тренды — я подстраиваю съёмку под человека</p>
           <ul class="diff-list">
@@ -356,14 +356,14 @@
           </ul>
         </div>
 
-        <div class="about-block about-block--quote reveal" data-reveal>
+        <div class="about-block about-block--quote gold-frame reveal" data-reveal>
           <blockquote class="result-quote font-display">
             «Это точно я. Только лучше»
           </blockquote>
         </div>
 
         <aside class="about-aside reveal" data-reveal>
-          <div class="mini-card">
+          <div class="mini-card gold-frame">
             <div class="mini-card__title font-display">Студия</div>
             <p class="about-item__text">
               г. Солнечногорск, ул. Тельнова, дом 3/2 — студия и выезд по Московской области.
@@ -380,19 +380,19 @@
         <h2 id="reviews-heading" class="section-title font-display">Отзывы</h2>
         <p class="section-subtitle reviews-intro">Словами тех, кто уже снимался</p>
         <div class="reviews-grid">
-          <figure class="review-card">
+          <figure class="review-card gold-frame">
             <blockquote class="review-card__text">
               Очень спокойная атмосфера. Я обычно напрягаюсь перед камерой, а тут забыла про это к середине съёмки.
             </blockquote>
             <figcaption class="review-card__author">— Анна, портрет</figcaption>
           </figure>
-          <figure class="review-card">
+          <figure class="review-card gold-frame">
             <blockquote class="review-card__text">
               Виктор терпеливо подсказывал, никуда не гнал. Результат — живые фото, не «пластик из соцсетей».
             </blockquote>
             <figcaption class="review-card__author">— Дмитрий и Мария, семья</figcaption>
           </figure>
-          <figure class="review-card">
+          <figure class="review-card gold-frame">
             <blockquote class="review-card__text">
               Свадьба прошла суматошно, а на снимках — воздух и свет. Спасибо за бережное отношение к кадру.
             </blockquote>
@@ -418,15 +418,15 @@
               <a class="btn btn--secondary" href="mailto:mik-viktor@yandex.ru">Написать на почту</a>
               <a class="btn btn--secondary" href="#contactForm">Написать фотографу</a>
             </div>
-            <div class="info-card contact-card">
+            <div class="info-card contact-card gold-frame">
               <div class="info-card__label">Телефон</div>
               <a class="info-card__value" href="tel:+79859975472">+7 (985) 997-54-72</a>
             </div>
-            <div class="info-card contact-card">
+            <div class="info-card contact-card gold-frame">
               <div class="info-card__label">Почта</div>
               <a class="info-card__value" href="mailto:mik-viktor@yandex.ru">mik-viktor@yandex.ru</a>
             </div>
-            <div class="info-card contact-card">
+            <div class="info-card contact-card gold-frame">
               <div class="info-card__label">Адрес студии</div>
               <a
                 class="info-card__value"
@@ -435,7 +435,7 @@
                 rel="noreferrer"
               >г. Солнечногорск, ул. Тельнова, дом 3/2</a>
             </div>
-            <div class="info-card contact-card">
+            <div class="info-card contact-card gold-frame">
               <div class="info-card__label">Max и ВКонтакте</div>
               <div class="messenger-grid">
                 <a
@@ -466,7 +466,7 @@
             </div>
           </div>
 
-          <form class="contact__form reveal" data-reveal id="contactForm" action="https://formsubmit.co/mik-viktor@yandex.ru" method="POST">
+          <form class="contact__form gold-frame reveal" data-reveal id="contactForm" action="https://formsubmit.co/mik-viktor@yandex.ru" method="POST">
             <input type="hidden" name="_subject" value="Новая заявка с сайта фотографа" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
@@ -515,6 +515,6 @@
 
   <button class="theme-toggle icon-glow" id="themeToggle" type="button" aria-label="Переключить тему" title="Сменить тему">🌙</button>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>

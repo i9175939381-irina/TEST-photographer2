@@ -366,6 +366,12 @@
         lastX = e.clientX;
         lastY = e.clientY;
         lastT = performance.now();
+        const r = zone.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / Math.max(1, r.width)) * 100;
+        const y = ((e.clientY - r.top) / Math.max(1, r.height)) * 100;
+        zone.style.setProperty("--gx", `${x.toFixed(2)}%`);
+        zone.style.setProperty("--gy", `${y.toFixed(2)}%`);
+        zone.classList.add("is-glow-active");
       });
       zone.addEventListener("mousemove", (e) => {
         const r = zone.getBoundingClientRect();
