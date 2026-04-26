@@ -3,33 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Виктор Михайлов — портфолио</title>
-  <meta name="description" content="Портфолио Виктора Михайлова. Портрет, семья, свадьбы, репортаж, архитектура и пейзаж. Студия в Солнечногорске." />
+  <title>Виктор Михайлов — фотограф</title>
+  <meta name="description" content="Виктор Михайлов — фотограф из Солнечногорска. Портрет, семья, свадьбы, репортаж, пространство, животные. Студия и выезд по Московской области." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержимому</a>
 
-  <!-- Приветственный лендинг-экран (показывается при первом заходе, можно скрыть навсегда) -->
   <div class="welcome" id="welcome" aria-hidden="true">
     <div class="welcome__overlay" data-welcome-close aria-label="Закрыть приветственный экран"></div>
     <section class="welcome__panel" role="dialog" aria-modal="true" aria-label="Добро пожаловать">
       <div class="welcome__badge">Портфолио фотографа</div>
-      <h2 class="welcome__title">Добро пожаловать</h2>
+      <h2 class="welcome__title font-display">Добро пожаловать</h2>
       <p class="welcome__text">
-        Здесь — отобранные работы и быстрый способ записаться на съёмку. Листайте портфолио, а если хотите — сразу перейдём к контактам.
+        Здесь — отобранные работы и спокойный способ записаться на съёмку. Листайте портфолио или сразу напишите мне.
       </p>
-
       <div class="welcome__actions">
         <button class="btn btn--primary" type="button" id="welcomeEnter">Войти на сайт</button>
         <a class="btn btn--secondary" href="#contact" id="welcomeToContact">Сразу к контактам</a>
       </div>
-
       <label class="welcome__remember">
         <input class="welcome__checkbox" type="checkbox" id="welcomeRemember" />
         <span>Больше не показывать</span>
       </label>
-
       <button class="welcome__close" type="button" data-welcome-close aria-label="Закрыть">&times;</button>
     </section>
   </div>
@@ -38,15 +37,14 @@
     <div class="container header-inner">
       <a class="brand" href="#home" aria-label="На главную">
         <span class="brand__mark" aria-hidden="true">📷</span>
-        <span class="brand__text">Виктор Михайлов</span>
+        <span class="brand__text font-display">Виктор Михайлов</span>
       </a>
-
       <nav class="nav" aria-label="Основная навигация">
         <a href="#gallery" class="nav__link">Портфолио</a>
         <a href="#about" class="nav__link">Обо мне</a>
+        <a href="#reviews" class="nav__link">Отзывы</a>
         <a href="#contact" class="nav__link">Контакты</a>
       </nav>
-
       <div class="header-cta">
         <a class="btn btn--primary" href="#contact">Записаться</a>
       </div>
@@ -56,301 +54,387 @@
   <main id="main">
     <section id="home" class="hero">
       <div class="container hero-inner">
-        <div class="hero__content">
-          <h1 class="hero__title">«Я даю кадру дышать. Не перегружаю.»</h1>
-          <p class="hero__subtitle">
-            Фотограф из Солнечногорска (Московская область). Снимаю портрет, семью, свадьбу, репортаж, архитектуру и пейзажи
-            — с живыми эмоциями и аккуратной обработкой.
+        <div class="hero__content reveal" data-reveal>
+          <h1 class="hero__title font-display">
+            Я даю кадру дышать.<br />Не перегружаю.
+          </h1>
+          <p class="hero__lead">Помогаю человеку в кадре чувствовать себя спокойно и выглядеть естественно</p>
+          <p class="hero__desc">
+            Портреты, семья, свадьбы и съёмки для себя или бизнеса — когда важно не просто «получиться», а узнать себя на фото
           </p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#gallery">Смотреть работы</a>
-            <a class="btn btn--secondary" href="#contact">Узнать свободные даты</a>
+            <a class="btn btn--secondary" href="#contact-form">Написать фотографу</a>
           </div>
-          <div class="hero__meta">
-            <span class="chip">Портрет • Семья/дети</span>
-            <span class="chip">Свадьбы • Репортаж</span>
-            <span class="chip">Архитектура • Пейзаж • Животные</span>
-          </div>
+          <p class="hero__location">Солнечногорск · Московская область · студия и выезд</p>
         </div>
-        <div class="hero__visual" aria-hidden="true">
-          <div class="hero-card">
-            <div class="hero-card__bg"></div>
-            <div class="hero-card__content">
-              <div class="hero-card__title">Фотостудия в Солнечногорске</div>
-              <div class="hero-card__stat">
-                <span class="hero-card__num">6+</span>
-                <span class="hero-card__label">жанров</span>
+        <div class="hero__visual reveal" data-reveal aria-hidden="true">
+          <div class="hero-portrait">
+            <div class="hero-portrait__frame">
+              <div class="hero-portrait__placeholder" role="img" aria-label="Портрет Виктора Михайлова — фото будет добавлено">
+                <span class="hero-portrait__initials">ВМ</span>
+                <span class="hero-portrait__hint">Фото Виктора</span>
               </div>
-              <div class="hero-card__note">Одинаково уверенно работаю в разных жанрах и условиях</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="gallery" class="section">
+    <section id="trust" class="section section--trust reveal" data-reveal aria-labelledby="trust-heading">
       <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">Портфолио</h2>
-          <p class="section-subtitle">Нажмите на фото, чтобы посмотреть в увеличении.</p>
+        <h2 id="trust-heading" class="visually-hidden">Почему со мной спокойно</h2>
+        <div class="trust-grid">
+          <article class="trust-card" data-trust-card tabindex="0">
+            <div class="trust-card__inner">
+              <h3 class="trust-card__title font-display">Спокойная съёмка</h3>
+              <p class="trust-card__text">Без давления и спешки</p>
+            </div>
+          </article>
+          <article class="trust-card" data-trust-card tabindex="0">
+            <div class="trust-card__inner">
+              <h3 class="trust-card__title font-display">Помогаю расслабиться</h3>
+              <p class="trust-card__text">Подсказываю и направляю</p>
+            </div>
+          </article>
+          <article class="trust-card" data-trust-card tabindex="0">
+            <div class="trust-card__inner">
+              <h3 class="trust-card__title font-display">Студия и выезд</h3>
+              <p class="trust-card__text">Солнечногорск и область</p>
+            </div>
+          </article>
+          <article class="trust-card" data-trust-card tabindex="0">
+            <div class="trust-card__inner">
+              <h3 class="trust-card__title font-display">Аккуратная обработка</h3>
+              <p class="trust-card__text">Без перегруза</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section section--gallery">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <div>
+            <h2 class="section-title font-display">Портфолио</h2>
+            <p class="section-subtitle gallery-intro">
+              Выберите жанр — и смотрите съёмки без лишнего визуального шума
+            </p>
+          </div>
         </div>
 
-        <!-- Фильтр портфолио: быстро отобрать нужный жанр -->
-        <div class="filters" id="galleryFilters" role="group" aria-label="Фильтр портфолио">
-          <button class="filters__btn is-active" type="button" data-filter="all" aria-pressed="true">Все</button>
-          <button class="filters__btn" type="button" data-filter="portrait" aria-pressed="false">Портрет</button>
-          <button class="filters__btn" type="button" data-filter="family-children" aria-pressed="false">Семья/дети</button>
-          <button class="filters__btn" type="button" data-filter="wedding" aria-pressed="false">Свадьба</button>
-          <button class="filters__btn" type="button" data-filter="animals" aria-pressed="false">Животные</button>
+        <div class="filters" id="galleryFilters" role="group" aria-label="Жанры портфолио">
+          <button class="filters__btn is-active" type="button" data-filter="portrait" aria-pressed="true">Портрет</button>
+          <button class="filters__btn" type="button" data-filter="family" aria-pressed="false">Семья и дети</button>
+          <button class="filters__btn" type="button" data-filter="wedding" aria-pressed="false">Свадьбы</button>
           <button class="filters__btn" type="button" data-filter="report" aria-pressed="false">Репортаж</button>
-          <button class="filters__btn" type="button" data-filter="architecture" aria-pressed="false">Архитектура</button>
-          <button class="filters__btn" type="button" data-filter="landscape" aria-pressed="false">Пейзаж</button>
+          <button class="filters__btn" type="button" data-filter="space" aria-pressed="false">Пространство</button>
+          <button class="filters__btn" type="button" data-filter="animals" aria-pressed="false">Животные</button>
         </div>
 
-        <div class="photo-grid" id="photoGrid">
-          <figure class="photo" data-category="portrait">
+        <p class="photo-grid__hint reveal" data-reveal>Нажмите на фото, чтобы открыть в полном размере</p>
+
+        <div class="photo-grid" id="photoGrid" aria-live="polite">
+          <figure class="photo photo--show" data-category="portrait">
             <button
               class="photo__btn"
               type="button"
               data-full="https://i.postimg.cc/3RW4RhZ3/Vita-v-fotostudii-(v-rabotu).png"
-              data-caption="Фото 1"
+              data-caption="Портрет"
             >
+              <span class="photo__shine" aria-hidden="true"></span>
               <img
                 class="photo__img"
                 src="https://i.postimg.cc/3RW4RhZ3/Vita-v-fotostudii-(v-rabotu).png"
-                alt="Фото 1"
+                alt="Портрет в студии"
                 loading="lazy"
               />
             </button>
-            <figcaption class="photo__caption">Фото 1</figcaption>
+            <figcaption class="photo__caption">Портрет</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button
-              class="photo__btn"
-              type="button"
-              data-full="https://i.postimg.cc/VNnZhytq/7.jpg"
-              data-caption="Свадьба 1"
-            >
-              <img
-                class="photo__img"
-                src="https://i.postimg.cc/VNnZhytq/7.jpg"
-                alt="Свадьба 1"
-                loading="lazy"
-              />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/VNnZhytq/7.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/VNnZhytq/7.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 1</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="landscape">
-            <button
-              class="photo__btn"
-              type="button"
-              data-full="https://i.postimg.cc/SQvLcTXG/3.jpg"
-              data-caption="Фото 3"
-            >
-              <img
-                class="photo__img"
-                src="https://i.postimg.cc/SQvLcTXG/3.jpg"
-                alt="Фото 3"
-                loading="lazy"
-              />
+          <figure class="photo is-hidden" data-category="space">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/SQvLcTXG/3.jpg" data-caption="Пространство">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/SQvLcTXG/3.jpg" alt="Пространство" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Фото 3</figcaption>
+            <figcaption class="photo__caption">Пространство</figcaption>
           </figure>
 
-          <figure class="photo" data-category="animals">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/pW8nLnfk/174.jpg" data-caption="Животные 1">
-              <img class="photo__img" src="https://i.postimg.cc/pW8nLnfk/174.jpg" alt="Животные 1" loading="lazy" />
+          <figure class="photo is-hidden" data-category="animals">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/pW8nLnfk/174.jpg" data-caption="Животные">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/pW8nLnfk/174.jpg" alt="Животные" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Животные 1</figcaption>
+            <figcaption class="photo__caption">Животные</figcaption>
           </figure>
 
-          <figure class="photo" data-category="animals">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/s3yBw84h/017.jpg" data-caption="Животные 2">
-              <img class="photo__img" src="https://i.postimg.cc/s3yBw84h/017.jpg" alt="Животные 2" loading="lazy" />
+          <figure class="photo is-hidden" data-category="animals">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/s3yBw84h/017.jpg" data-caption="Животные">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/s3yBw84h/017.jpg" alt="Животные" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Животные 2</figcaption>
+            <figcaption class="photo__caption">Животные</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/HpNQxgfV/147.jpg" data-caption="Свадьба 2">
-              <img class="photo__img" src="https://i.postimg.cc/HpNQxgfV/147.jpg" alt="Свадьба 2" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/HpNQxgfV/147.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/HpNQxgfV/147.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 2</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/LH33xL1r/102.jpg" data-caption="Свадьба 3">
-              <img class="photo__img" src="https://i.postimg.cc/LH33xL1r/102.jpg" alt="Свадьба 3" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/LH33xL1r/102.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/LH33xL1r/102.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 3</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/MqLPB771/074.jpg" data-caption="Свадьба 4">
-              <img class="photo__img" src="https://i.postimg.cc/MqLPB771/074.jpg" alt="Свадьба 4" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/MqLPB771/074.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/MqLPB771/074.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 4</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/hD0ZQNsd/072.jpg" data-caption="Свадьба 5">
-              <img class="photo__img" src="https://i.postimg.cc/hD0ZQNsd/072.jpg" alt="Свадьба 5" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/hD0ZQNsd/072.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/hD0ZQNsd/072.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 5</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/GLPVJ4Lk/060.jpg" data-caption="Свадьба 6">
-              <img class="photo__img" src="https://i.postimg.cc/GLPVJ4Lk/060.jpg" alt="Свадьба 6" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/GLPVJ4Lk/060.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/GLPVJ4Lk/060.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 6</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/rqbB86Z8/057.jpg" data-caption="Свадьба 7">
-              <img class="photo__img" src="https://i.postimg.cc/rqbB86Z8/057.jpg" alt="Свадьба 7" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/rqbB86Z8/057.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/rqbB86Z8/057.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 7</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/HYG1tGbh/047.jpg" data-caption="Свадьба 8">
-              <img class="photo__img" src="https://i.postimg.cc/HYG1tGbh/047.jpg" alt="Свадьба 8" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/HYG1tGbh/047.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/HYG1tGbh/047.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 8</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4s14N3Vq/029.jpg" data-caption="Свадьба 9">
-              <img class="photo__img" src="https://i.postimg.cc/4s14N3Vq/029.jpg" alt="Свадьба 9" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4s14N3Vq/029.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/4s14N3Vq/029.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 9</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="wedding">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4frytF3H/019.jpg" data-caption="Свадьба 10">
-              <img class="photo__img" src="https://i.postimg.cc/4frytF3H/019.jpg" alt="Свадьба 10" loading="lazy" />
+          <figure class="photo is-hidden" data-category="wedding">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4frytF3H/019.jpg" data-caption="Свадьба">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/4frytF3H/019.jpg" alt="Свадьба" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Свадьба 10</figcaption>
+            <figcaption class="photo__caption">Свадьба</figcaption>
           </figure>
 
-          <figure class="photo" data-category="family-children">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4XZwkXTq/137.jpg" data-caption="Семья/дети 1">
-              <img class="photo__img" src="https://i.postimg.cc/4XZwkXTq/137.jpg" alt="Семья и дети 1" loading="lazy" />
+          <figure class="photo is-hidden" data-category="family">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/4XZwkXTq/137.jpg" data-caption="Семья и дети">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/4XZwkXTq/137.jpg" alt="Семья и дети" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Семья/дети 1</figcaption>
+            <figcaption class="photo__caption">Семья и дети</figcaption>
           </figure>
 
-          <figure class="photo" data-category="family-children">
-            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/qJYQ9nk3/135.jpg" data-caption="Семья/дети 2">
-              <img class="photo__img" src="https://i.postimg.cc/qJYQ9nk3/135.jpg" alt="Семья и дети 2" loading="lazy" />
+          <figure class="photo is-hidden" data-category="family">
+            <button class="photo__btn" type="button" data-full="https://i.postimg.cc/qJYQ9nk3/135.jpg" data-caption="Семья и дети">
+              <span class="photo__shine" aria-hidden="true"></span>
+              <img class="photo__img" src="https://i.postimg.cc/qJYQ9nk3/135.jpg" alt="Семья и дети" loading="lazy" />
             </button>
-            <figcaption class="photo__caption">Семья/дети 2</figcaption>
+            <figcaption class="photo__caption">Семья и дети</figcaption>
           </figure>
+        </div>
+        <p class="photo-grid__empty" id="photoGridEmpty" hidden>В этом жанре пока нет работ в онлайн-витрине — напишите, пришлю примеры.</p>
+      </div>
+    </section>
+
+    <section id="manifest" class="section section--manifest reveal" data-reveal aria-labelledby="manifest-heading">
+      <div class="container">
+        <h2 id="manifest-heading" class="visually-hidden">Манифест</h2>
+        <div class="manifest">
+          <p class="manifest__line font-display">Фотография — не про позу</p>
+          <p class="manifest__line font-display">Это про момент,<br />когда человек перестаёт контролировать<br />и начинает быть собой</p>
+          <p class="manifest__line font-display">Я не заставляю играть роль</p>
+          <p class="manifest__line font-display">Я создаю пространство,<br />где это происходит само</p>
+          <p class="manifest__line font-display">Кадр должен дышать</p>
+          <p class="manifest__line font-display manifest__line--accent">И если в нём есть жизнь —<br />значит, всё получилось</p>
         </div>
       </div>
     </section>
 
     <section id="about" class="section section--alt">
-      <div class="container about">
-        <div class="about__left">
-          <h2 class="section-title">Обо мне</h2>
-          <p class="about__text">
-            Меня зовут <strong>Виктор Михайлов</strong>. Я многогранный фотограф: снимаю портреты, семью, свадьбы, репортажи,
-            архитектуру и пейзажи — и каждый раз строю работу вокруг человека и смысла кадра.
+      <div class="container about-stack">
+        <div class="about-block reveal" data-reveal>
+          <h2 class="section-title font-display">Обо мне</h2>
+          <p class="about__text about__text--lead">
+            Меня зовут Виктор Михайлов. Я фотограф из Солнечногорска.
           </p>
-          <div class="about__list">
-            <div class="about-item">
-              <div class="about-item__title">Что снимаю</div>
-              <div class="about-item__text">Портрет, семья/дети, свадьба, репортаж, архитектура, пейзаж, животные</div>
-            </div>
-            <div class="about-item">
-              <div class="about-item__title">Авторский стиль</div>
-              <div class="about-item__text">«Я даю кадру дышать. Не перегружаю, не ломаю, не маскирую человека.
-                Фотография должна оставаться живой»</div>
-            </div>
-            <div class="about-item">
-              <div class="about-item__title">Чем отличаюсь</div>
-              <div class="about-item__text">
-                Не копирую тренды — адаптирую под человека. Уверенно работаю в разных жанрах.
-                Быстро выстраиваю контакт и не теряюсь в нестандартных условиях.
-              </div>
-            </div>
-            <div class="about-item">
-              <div class="about-item__title">Ответственность за результат</div>
-              <div class="about-item__text">Отвечаю за результат, а не за «попробуем»</div>
-            </div>
-          </div>
+          <p class="about__text">
+            Ко мне часто приходят люди, которые думают:<br />
+            «я не фотогеничный», «я не умею позировать»
+          </p>
+          <p class="about__text">
+            Я делаю съёмку так, чтобы это перестало иметь значение.
+          </p>
+          <p class="about__text">
+            Без спешки, без давления — чтобы на фото вы были собой. Только лучше.
+          </p>
         </div>
 
-        <aside class="about__right">
+        <div class="about-block reveal" data-reveal>
+          <h3 class="about-block__title font-display">Что снимаю</h3>
+          <p class="about__text about__text--intro">Снимаю в разных жанрах, но в центре всегда человек</p>
+          <ul class="genre-list">
+            <li>Портрет</li>
+            <li>Семья</li>
+            <li>Свадьбы</li>
+            <li>Репортаж</li>
+            <li>Архитектура</li>
+            <li>Животные</li>
+          </ul>
+        </div>
+
+        <div class="about-block about-block--card reveal" data-reveal>
+          <h3 class="about-block__title font-display">Как проходит съёмка</h3>
+          <ol class="steps-list">
+            <li><strong>Обсуждаем задачу</strong></li>
+            <li><strong>Снимаем спокойно</strong></li>
+            <li><strong>Отбираем и дорабатываем</strong></li>
+          </ol>
+          <p class="steps-note">Вам не нужно уметь позировать — я помогу</p>
+        </div>
+
+        <div class="about-block about-block--card reveal" data-reveal>
+          <h3 class="about-block__title font-display">Чем отличаюсь</h3>
+          <p class="about__text">Я не копирую тренды — я подстраиваю съёмку под человека</p>
+          <ul class="diff-list">
+            <li>Не перегружаю</li>
+            <li>Не ломаю под кадр</li>
+            <li>Работаю спокойно и точно</li>
+          </ul>
+        </div>
+
+        <div class="about-block about-block--quote reveal" data-reveal>
+          <blockquote class="result-quote font-display">
+            «Это точно я. Только лучше»
+          </blockquote>
+        </div>
+
+        <aside class="about-aside reveal" data-reveal>
           <div class="mini-card">
-            <div class="mini-card__title">Быстрые шаги</div>
-            <div class="about-item__text" style="margin-bottom: 10px;">
-              Работаю в студии и выезжаю по Московской области.
-              Адрес студии: г. Солнечногорск, ул. Тельнова, дом 3/2.
-            </div>
-            <ol class="mini-card__steps">
-              <li>Вы пишете/звоните.</li>
-              <li>Обсуждаем стиль и даты.</li>
-              <li>Проводим съёмку и согласуем результат.</li>
-            </ol>
-            <a class="btn btn--primary btn--full" href="#contact">Написать мне</a>
-            <a class="link" href="#gallery">Сначала посмотреть портфолио</a>
+            <div class="mini-card__title font-display">Студия</div>
+            <p class="about-item__text">
+              г. Солнечногорск, ул. Тельнова, дом 3/2 — студия и выезд по Московской области.
+            </p>
+            <a class="btn btn--primary btn--full" href="#contact-form">Написать фотографу</a>
+            <a class="link" href="#gallery">К портфолио</a>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <section id="reviews" class="section section--reviews reveal" data-reveal aria-labelledby="reviews-heading">
       <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">Контакты</h2>
-          <p class="section-subtitle">Оставьте сообщение — отвечу в ближайшее время. Студия в Солнечногорске.</p>
+        <h2 id="reviews-heading" class="section-title font-display">Отзывы</h2>
+        <p class="section-subtitle reviews-intro">Словами тех, кто уже снимался</p>
+        <div class="reviews-grid">
+          <figure class="review-card">
+            <blockquote class="review-card__text">
+              Очень спокойная атмосфера. Я обычно напрягаюсь перед камерой, а тут забыла про это к середине съёмки.
+            </blockquote>
+            <figcaption class="review-card__author">— Анна, портрет</figcaption>
+          </figure>
+          <figure class="review-card">
+            <blockquote class="review-card__text">
+              Виктор терпеливо подсказывал, никуда не гнал. Результат — живые фото, не «пластик из соцсетей».
+            </blockquote>
+            <figcaption class="review-card__author">— Дмитрий и Мария, семья</figcaption>
+          </figure>
+          <figure class="review-card">
+            <blockquote class="review-card__text">
+              Свадьба прошла суматошно, а на снимках — воздух и свет. Спасибо за бережное отношение к кадру.
+            </blockquote>
+            <figcaption class="review-card__author">— Елена, свадьба</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--contact">
+      <div class="container">
+        <div class="section-head reveal" data-reveal>
+          <div>
+            <h2 class="section-title font-display">Контакты</h2>
+            <p class="section-subtitle">Опишите задачу или идею — я отвечу и подскажу</p>
+          </div>
         </div>
 
         <div class="contact">
-          <div class="contact__info">
-            <div class="info-card">
-              <div class="info-card__label">Почта</div>
-              <div class="info-card__emails">
-                <div class="info-card__email-row">
-                  <a class="info-card__value" href="mailto:mik-viktor@yandex.ru">mik-viktor@yandex.ru</a>
-                  <span class="info-card__email-tag">основной</span>
-                </div>
-                <a class="info-card__value" href="mailto:toursol8@gmail.com">toursol8@gmail.com</a>
-                <a class="info-card__value" href="mailto:toursol@mail.ru">toursol@mail.ru</a>
-              </div>
+          <div class="contact__cta reveal" data-reveal>
+            <div class="cta-row">
+              <a class="btn btn--primary" href="tel:+79859975472">Позвонить</a>
+              <a class="btn btn--secondary" href="mailto:mik-viktor@yandex.ru">Написать на почту</a>
+              <a class="btn btn--secondary" href="#contact-form">Написать фотографу</a>
             </div>
-            <div class="info-card">
+            <div class="info-card contact-card">
               <div class="info-card__label">Телефон</div>
               <a class="info-card__value" href="tel:+79859975472">+7 (985) 997-54-72</a>
             </div>
-            <div class="info-card">
+            <div class="info-card contact-card">
+              <div class="info-card__label">Почта</div>
+              <a class="info-card__value" href="mailto:mik-viktor@yandex.ru">mik-viktor@yandex.ru</a>
+            </div>
+            <div class="info-card contact-card">
               <div class="info-card__label">Адрес студии</div>
               <a
                 class="info-card__value"
                 href="https://yandex.ru/maps/?text=%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D0%BE%D0%B3%D0%BE%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A2%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B2%D0%B0%2C%20%D0%B4%D0%BE%D0%BC%203%2F2"
                 target="_blank"
                 rel="noreferrer"
-              >
-                г. Солнечногорск, ул. Тельнова, дом 3/2
-              </a>
+              >г. Солнечногорск, ул. Тельнова, дом 3/2</a>
             </div>
-            <div class="info-card">
+            <div class="info-card contact-card">
               <div class="info-card__label">Соцсети</div>
-              <a class="info-card__value" href="https://instagram.com/yourname" target="_blank" rel="noreferrer">instagram.com/yourname</a>
+              <div class="social-links">
+                <a class="social-links__a" href="https://t.me/username" target="_blank" rel="noreferrer">Telegram</a>
+                <a class="social-links__a" href="https://vk.com/username" target="_blank" rel="noreferrer">VK</a>
+                <a class="social-links__a" href="https://instagram.com/username" target="_blank" rel="noreferrer">Instagram</a>
+              </div>
+              <p class="social-links__hint">Замените ссылки на ваши профили</p>
             </div>
           </div>
 
-          <form
-            class="contact__form"
-            id="contactForm"
-            action="https://formsubmit.co/mik-viktor@yandex.ru"
-            method="POST"
-          >
+          <form class="contact__form reveal" data-reveal id="contact-form" action="https://formsubmit.co/mik-viktor@yandex.ru" method="POST">
             <input type="hidden" name="_subject" value="Новая заявка с сайта фотографа" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
@@ -364,16 +448,14 @@
                 <input class="field__input" name="email" type="email" autocomplete="email" required />
               </label>
             </div>
-
             <label class="field">
               <span class="field__label">Сообщение</span>
               <textarea class="field__input field__textarea" name="message" rows="5" required
-                placeholder="Например: портрет/семья/свадьба, желаемые даты, район/локация (Солнечногорск или выезд), стиль"></textarea>
+                placeholder="Жанр, даты, студия или выезд, любые пожелания"></textarea>
             </label>
-
             <button class="btn btn--primary btn--full" type="submit">Отправить</button>
             <p class="form-hint">
-              Сообщение отправляется на основную почту: mik-viktor@yandex.ru. При первой отправке FormSubmit пришлёт письмо для подтверждения этого адреса — откройте ссылку из письма, иначе заявки не будут приходить.
+              Отправка на mik-viktor@yandex.ru. При первой заявке сервис пришлёт письмо для подтверждения — откройте ссылку из письма.
             </p>
           </form>
         </div>
@@ -383,7 +465,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="footer__left">© <span id="year"></span> Виктор Михайлов. Все права защищены.</div>
+      <div class="footer__left">© <span id="year"></span> Виктор Михайлов</div>
       <div class="footer__right">
         <a class="link" href="#home">Наверх</a>
       </div>
@@ -399,18 +481,8 @@
     </div>
   </div>
 
-  <!-- Кнопка переключения темы (фиксирована в правом нижнем углу) -->
-  <button
-    class="theme-toggle"
-    id="themeToggle"
-    type="button"
-    aria-label="Переключить тему"
-    title="Сменить тему"
-  >
-    🌙
-  </button>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему" title="Сменить тему">🌙</button>
 
   <script src="script.js"></script>
 </body>
 </html>
-

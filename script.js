@@ -2,7 +2,9 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  // Welcome landing screen
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Welcome
   const welcome = $("#welcome");
   const welcomeEnter = $("#welcomeEnter");
   const welcomeToContact = $("#welcomeToContact");
@@ -27,7 +29,6 @@
     sessionStorage.setItem("welcome-seen", "1");
   };
 
-  // Show only when not hidden permanently and not yet seen in current tab
   const shouldShowWelcome =
     !!welcome &&
     localStorage.getItem(WELCOME_STORAGE_KEY) !== "1" &&
@@ -51,7 +52,7 @@
     });
   }
 
-  // Theme toggle (dark/light) with persistence
+  // Theme
   const themeToggle = $("#themeToggle");
   const STORAGE_THEME_KEY = "site-theme";
   const rootEl = document.documentElement;
@@ -78,11 +79,10 @@
     });
   }
 
-  // Footer year
   const yearEl = $("#year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Modal image viewer
+  // Modal
   const modal = $("#modal");
   const modalImg = $("#modalImg");
   const modalCaption = $("#modalCaption");
@@ -107,7 +107,6 @@
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
-    // Clear to avoid screen readers reading old alt
     if (modalImg) modalImg.removeAttribute("src");
   };
 
@@ -125,7 +124,6 @@
   if (modal) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
-        // If welcome is open — close it first, otherwise close modal
         if (welcome && welcome.classList.contains("is-open")) {
           closeWelcome({ remember: !!(welcomeRemember && welcomeRemember.checked) });
         } else {
@@ -135,36 +133,74 @@
     });
   }
 
-  // Gallery filters
+  const photoGrid = $("#photoGrid");
+  const photoGridEmpty = $("#photoGridEmpty");
+  let galleryFirstApply = true;
+
+  const setActiveFilterButton = (filterButtons, activeBtn) => {
+    filterButtons.forEach((b) => {
+      const isActive = b === activeBtn;
+      b.classList.toggle("is-active", isActive);
+      b.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+  };
+
+  const animateVisiblePhotos = (filter) => {
+    const visible = photoFigures.filter((fig) => (fig.getAttribute("data-category") || "") === filter);
+    if (prefersReducedMotion) {
+      visible.forEach((fig) => fig.classList.add("photo--show"));
+      return;
+    }
+    if (galleryFirstApply) {
+      galleryFirstApply = false;
+      visible.forEach((fig) => fig.classList.add("photo--show"));
+      return;
+    }
+    visible.forEach((fig) => fig.classList.remove("photo--show"));
+    visible.forEach((fig, i) => {
+      window.setTimeout(() => fig.classList.add("photo--show"), i * 52);
+    });
+  };
+
+  const applyFilter = (filter, filterButtons) => {
+    photoFigures.forEach((fig) => {
+      const cat = fig.getAttribute("data-category") || "";
+      const shouldShow = cat === filter;
+      fig.classList.toggle("is-hidden", !shouldShow);
+      if (!shouldShow) fig.classList.remove("photo--show");
+    });
+
+    const visibleCount = photoFigures.filter((f) => !f.classList.contains("is-hidden")).length;
+    if (photoGridEmpty && photoGrid) {
+      const empty = visibleCount === 0;
+      photoGridEmpty.hidden = !empty;
+      photoGrid.hidden = empty;
+    }
+
+    animateVisiblePhotos(filter);
+
+    if (filterButtons) {
+      const activeBtn = filterButtons.find((b) => (b.getAttribute("data-filter") || "") === filter);
+      if (activeBtn) setActiveFilterButton(filterButtons, activeBtn);
+    }
+  };
+
   const galleryFilters = $("#galleryFilters");
   if (galleryFilters) {
     const filterButtons = $$("[data-filter]", galleryFilters);
-
-    const setActiveFilterButton = (activeBtn) => {
-      filterButtons.forEach((b) => {
-        const isActive = b === activeBtn;
-        b.classList.toggle("is-active", isActive);
-        b.setAttribute("aria-pressed", isActive ? "true" : "false");
-      });
-    };
-
-    const applyFilter = (filter) => {
-      photoFigures.forEach((fig) => {
-        const cat = fig.getAttribute("data-category") || "all";
-        const shouldShow = filter === "all" || cat === filter;
-        fig.classList.toggle("is-hidden", !shouldShow);
-      });
-    };
+    const defaultFilter = "portrait";
 
     filterButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        setActiveFilterButton(btn);
-        applyFilter(btn.getAttribute("data-filter") || "all");
+        const filter = btn.getAttribute("data-filter") || defaultFilter;
+        setActiveFilterButton(filterButtons, btn);
+        applyFilter(filter, null);
       });
     });
+
+    applyFilter(defaultFilter, filterButtons);
   }
 
-  // Modal navigation with keyboard (←/→) through currently visible photos
   const getVisibleButtons = () =>
     photoButtons.filter((btn) => {
       const fig = btn.closest(".photo");
@@ -188,7 +224,65 @@
     });
   };
 
-  // Contact form: background submit for any visitor (no mail client required).
+  // Trust cards: subtle follow + press
+  const trustCards = $$("[data-trust-card]");
+  trustCards.forEach((card) => {
+    const inner = card.querySelector(".trust-card__inner");
+    if (!inner) return;
+
+    const reset = () => {
+      inner.style.setProperty("--tx", "0px");
+      inner.style.setProperty("--ty", "0px");
+    };
+
+    if (!prefersReducedMotion) {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const nx = (e.clientX - cx) / (rect.width / 2);
+        const ny = (e.clientY - cy) / (rect.height / 2);
+        const dx = Math.max(-5, Math.min(5, nx * 5));
+        const dy = Math.max(-5, Math.min(5, ny * 5));
+        inner.style.setProperty("--tx", `${dx}px`);
+        inner.style.setProperty("--ty", `${dy}px`);
+      });
+      card.addEventListener("mouseleave", reset);
+    }
+
+    const press = () => {
+      card.classList.add("is-pressed");
+      window.setTimeout(() => card.classList.remove("is-pressed"), 360);
+    };
+    card.addEventListener("mousedown", press);
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        press();
+      }
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = $$("[data-reveal]");
+  if (revealEls.length && !prefersReducedMotion) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add("is-inview");
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-inview"));
+  }
+
+  // Contact form
   const contactForm = $("#contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
@@ -212,7 +306,7 @@
       };
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 12000);
+      const timeoutId = window.setTimeout(() => controller.abort(), 12000);
       try {
         const response = await fetch("https://formsubmit.co/ajax/mik-viktor@yandex.ru", {
           method: "POST",
@@ -232,10 +326,10 @@
         const statusMessage = err && err.message ? ` (${err.message})` : "";
         alert(
           `Не удалось отправить сообщение через форму${statusMessage}. ` +
-          "Сервис отправки временно недоступен. Попробуйте еще раз чуть позже или свяжитесь по почте mik-viktor@yandex.ru / телефону +7 (985) 997-54-72."
+            "Сервис отправки временно недоступен. Попробуйте позже или свяжитесь по почте mik-viktor@yandex.ru / телефону +7 (985) 997-54-72."
         );
       } finally {
-        clearTimeout(timeoutId);
+        window.clearTimeout(timeoutId);
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = originalBtnText || "Отправить";
@@ -244,7 +338,6 @@
     });
   }
 
-  // Close modal on click outside dialog (overlay already has data-close, but keep it safe)
   if (modal) {
     modal.addEventListener("click", (e) => {
       const target = e.target;
@@ -254,7 +347,6 @@
     });
   }
 
-  // Keyboard navigation (left/right) while modal is open
   if (modal) {
     document.addEventListener("keydown", (e) => {
       if (!modal.classList.contains("is-open")) return;
@@ -263,4 +355,3 @@
     });
   }
 })();
-
