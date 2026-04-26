@@ -406,10 +406,11 @@ body{
   }
 }
 
-/* Контакты: карточки Max / ВК */
+/* Контакты: карточка Max (QR) */
 .messenger-grid{
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 200px);
+  justify-content: flex-start;
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -456,7 +457,7 @@ body{
   transform: scale(1.03);
 }
 
-/* Единая «золотая» подсветка блоков при наведении — в духе карточек Max / ВК */
+/* Единая «золотая» подсветка блоков при наведении — в духе карточки Max */
 .gold-frame{
   transition: border-color 0.3s var(--ease-out), box-shadow 0.35s var(--ease-out), transform 0.3s var(--ease-out);
 }
