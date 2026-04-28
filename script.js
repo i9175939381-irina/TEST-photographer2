@@ -306,6 +306,59 @@
     });
   });
 
+  // Reviews slider
+  const reviewsSlider = $("#reviewsSlider");
+  const reviewsViewport = $(".reviews-slider__viewport", reviewsSlider || document);
+  const reviewItems = $$("[data-review-item]", reviewsSlider || document);
+  const reviewsNext = $("#reviewsNext");
+  const reviewsCounter = $("#reviewsCounter");
+  if (reviewsSlider && reviewItems.length > 0) {
+    let reviewIndex = 0;
+    let reviewsTimer = null;
+
+    const renderReview = () => {
+      reviewItems.forEach((item, idx) => {
+        item.classList.toggle("is-active", idx === reviewIndex);
+      });
+      if (reviewsViewport) {
+        const active = reviewItems[reviewIndex];
+        if (active) reviewsViewport.style.minHeight = `${active.scrollHeight}px`;
+      }
+      if (reviewsCounter) reviewsCounter.textContent = `${reviewIndex + 1} / ${reviewItems.length}`;
+    };
+
+    const nextReview = () => {
+      reviewIndex = (reviewIndex + 1) % reviewItems.length;
+      renderReview();
+    };
+
+    const stopReviewsAutoplay = () => {
+      if (reviewsTimer) {
+        window.clearInterval(reviewsTimer);
+        reviewsTimer = null;
+      }
+    };
+
+    const startReviewsAutoplay = () => {
+      if (prefersReducedMotion || reviewsTimer) return;
+      reviewsTimer = window.setInterval(nextReview, 6800);
+    };
+
+    if (reviewsNext) {
+      reviewsNext.addEventListener("click", () => {
+        nextReview();
+        stopReviewsAutoplay();
+        window.setTimeout(startReviewsAutoplay, 12000);
+      });
+    }
+
+    reviewsSlider.addEventListener("mouseenter", stopReviewsAutoplay);
+    reviewsSlider.addEventListener("mouseleave", startReviewsAutoplay);
+    window.addEventListener("resize", renderReview);
+    renderReview();
+    startReviewsAutoplay();
+  }
+
   // Scroll reveal
   const revealEls = $$("[data-reveal]");
   if (revealEls.length && !prefersReducedMotion) {

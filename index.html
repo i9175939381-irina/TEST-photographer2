@@ -46,7 +46,7 @@
         <a href="#contact" class="nav__link">Контакты</a>
       </nav>
       <div class="header-cta">
-        <a class="btn btn--primary" href="#contactForm">Записаться</a>
+        <a class="btn btn--primary" href="#contactForm">Обсудить съёмку</a>
       </div>
     </div>
   </header>
@@ -408,43 +408,53 @@
       <div class="container">
         <h2 id="reviews-heading" class="section-title font-display">Отзывы</h2>
         <p class="section-subtitle reviews-intro">Словами тех, кто уже снимался</p>
-        <div class="reviews-grid">
-          <figure class="review-card gold-frame">
-            <blockquote class="review-card__text">
-              Думали, что бизнес-съёмка — это сложно и долго. На деле всё прошло спокойно, и фото получились очень «наши».
-            </blockquote>
-            <figcaption class="review-card__author">— Ольга, владелец кофейни</figcaption>
-          </figure>
-          <figure class="review-card gold-frame">
-            <blockquote class="review-card__text">
-              Нужно было обновить визуал для сайта, презентаций и деловых профилей сотрудников. Съёмка прошла организованно, а фотографии получились живыми и профессиональными.
-            </blockquote>
-            <figcaption class="review-card__author">— Екатерина, HR-директор</figcaption>
-          </figure>
-          <figure class="review-card gold-frame">
-            <blockquote class="review-card__text">
-              Запрос был на деловой, но не «сухой» визуал для сайта и публикаций. Получили именно такой результат: чисто, сдержанно и с характером.
-            </blockquote>
-            <figcaption class="review-card__author">— Павел, генеральный директор</figcaption>
-          </figure>
-          <figure class="review-card gold-frame">
-            <blockquote class="review-card__text">
-              Огромная благодарность фотографу Виктору за невероятно тёплые и живые фотографии нашего семейного Новогоднего вечера в коттедже в Подмосковье! Съёмка была непростая — дети разного возраста, взрослые, постоянное движение, эмоции, смех — но Виктор справился на 100%. Он удивительно тонко чувствует людей, легко находит подход и к малышам, и к взрослым. В итоге у нас не просто красивые кадры, а настоящая история праздника, которую хочется пересматривать снова и снова.
-            </blockquote>
-            <figcaption class="review-card__author">— Дарья, г. Солнечногорск</figcaption>
-          </figure>
-          <figure class="review-card gold-frame">
-            <blockquote class="review-card__text">
-              Пригласили Виктора для съёмки выпускного вечера в школе и остались очень довольны результатом. Работает профессионально, незаметно и при этом успевает запечатлеть самые важные моменты. Уделил внимание каждому ученику, сделал отличные портреты и общие кадры. Отдельное спасибо за умение работать с подростками — никто не чувствовал себя неловко, всё прошло легко и естественно. В итоге получили качественные, красивые и атмосферные фотографии.
-            </blockquote>
-            <figcaption class="review-card__author">— Людмила Петрова, г. Москва</figcaption>
-          </figure>
-          <figure class="review-card gold-frame">
-            <blockquote class="review-card__text">
-              Виктор уже много лет фотографирует нашу семью и через его объектив прошло не одно поколение. В конце марта родилась моя третья внучка, и на семейном совете мы единогласно решили: встречу малышки должен снимать только «дядя Витя». Этот день стал настоящим праздником.
-            </blockquote>
-            <figcaption class="review-card__author">— Семья Хохловых, Зеленоград</figcaption>
-          </figure>
+        <div class="reviews-slider gold-frame" id="reviewsSlider" aria-live="polite">
+          <div class="reviews-slider__viewport">
+            <figure class="review-card is-active" data-review-item>
+              <blockquote class="review-card__text">
+                Думали, что бизнес-съёмка — это сложно и долго. На деле всё прошло спокойно, и фото получились очень «наши».
+              </blockquote>
+              <figcaption class="review-card__author">— Ольга, владелец кофейни</figcaption>
+            </figure>
+            <figure class="review-card" data-review-item>
+              <blockquote class="review-card__text">
+                Нужно было обновить визуал для сайта, презентаций и деловых профилей сотрудников. Съёмка прошла организованно, а фотографии получились живыми и профессиональными.
+              </blockquote>
+              <figcaption class="review-card__author">— Екатерина, HR-директор</figcaption>
+            </figure>
+            <figure class="review-card" data-review-item>
+              <blockquote class="review-card__text">
+                Запрос был на деловой, но не «сухой» визуал для сайта и публикаций. Получили именно такой результат: чисто, сдержанно и с характером.
+              </blockquote>
+              <figcaption class="review-card__author">— Павел, генеральный директор</figcaption>
+            </figure>
+            <figure class="review-card" data-review-item>
+              <blockquote class="review-card__text">
+                Огромная благодарность фотографу Виктору за невероятно тёплые и живые фотографии нашего семейного Новогоднего вечера в коттедже в Подмосковье! Съёмка была непростая — дети разного возраста, взрослые, постоянное движение, эмоции, смех — но Виктор справился на 100%. Он удивительно тонко чувствует людей, легко находит подход и к малышам, и к взрослым. В итоге у нас не просто красивые кадры, а настоящая история праздника, которую хочется пересматривать снова и снова.
+              </blockquote>
+              <figcaption class="review-card__author">— Дарья, г. Солнечногорск</figcaption>
+            </figure>
+            <figure class="review-card" data-review-item>
+              <blockquote class="review-card__text">
+                Пригласили Виктора для съёмки выпускного вечера в школе и остались очень довольны результатом. Работает профессионально, незаметно и при этом успевает запечатлеть самые важные моменты. Уделил внимание каждому ученику, сделал отличные портреты и общие кадры. Отдельное спасибо за умение работать с подростками — никто не чувствовал себя неловко, всё прошло легко и естественно. В итоге получили качественные, красивые и атмосферные фотографии.
+              </blockquote>
+              <figcaption class="review-card__author">— Людмила Петрова, г. Москва</figcaption>
+            </figure>
+            <figure class="review-card" data-review-item>
+              <blockquote class="review-card__text">
+                Виктор уже много лет фотографирует нашу семью и через его объектив прошло не одно поколение. В конце марта родилась моя третья внучка, и на семейном совете мы единогласно решили: встречу малышки должен снимать только «дядя Витя». Этот день стал настоящим праздником.
+              </blockquote>
+              <figcaption class="review-card__author">— Семья Хохловых, Зеленоград</figcaption>
+            </figure>
+          </div>
+          <div class="reviews-slider__controls">
+            <div class="reviews-slider__guide" aria-hidden="true">
+              <span class="reviews-slider__line"></span>
+              <span class="reviews-slider__star">✦</span>
+            </div>
+            <button class="reviews-slider__next" type="button" id="reviewsNext" aria-label="Следующий отзыв">→</button>
+          </div>
+          <p class="reviews-slider__counter" id="reviewsCounter">1 / 6</p>
         </div>
       </div>
     </section>
