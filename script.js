@@ -63,6 +63,27 @@
     welcomeEnter.addEventListener("mouseleave", resetWelcomeCta);
   }
 
+  if (!prefersReducedMotion) {
+    const magneticButtons = $$(".btn, .filters__btn").filter((el) => !el.classList.contains("welcome__cta"));
+    magneticButtons.forEach((el) => {
+      const max = el.classList.contains("filters__btn") ? 4 : 6;
+      const reset = () => {
+        el.style.setProperty("--mx", "0px");
+        el.style.setProperty("--my", "0px");
+      };
+      el.addEventListener("mousemove", (e) => {
+        const rect = el.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = Math.max(-max, Math.min(max, (e.clientX - cx) * 0.12));
+        const dy = Math.max(-max, Math.min(max, (e.clientY - cy) * 0.12));
+        el.style.setProperty("--mx", `${dx.toFixed(2)}px`);
+        el.style.setProperty("--my", `${dy.toFixed(2)}px`);
+      });
+      el.addEventListener("mouseleave", reset);
+    });
+  }
+
   // Theme
   const themeToggle = $("#themeToggle");
   const STORAGE_THEME_KEY = "site-theme";

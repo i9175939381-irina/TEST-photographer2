@@ -684,6 +684,8 @@ body{
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
+  position: relative;
+  overflow: hidden;
   padding: 11px 18px;
   border-radius: 999px;
   font-family: var(--font-body);
@@ -692,10 +694,25 @@ body{
   letter-spacing: .02em;
   cursor: pointer;
   transition: border-color .3s var(--ease-out), background .3s var(--ease-out), color .3s var(--ease-out), transform .25s var(--ease-out), box-shadow .3s var(--ease-out);
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+}
+.filters__btn::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(212,175,55,.2);
+  opacity: 0;
+  transition: opacity .24s var(--ease-out);
+  pointer-events: none;
 }
 .filters__btn:hover{
   border-color: rgba(201,169,98,.4);
-  box-shadow: 0 0 24px rgba(201,169,98,.12);
+  box-shadow: 0 0 24px rgba(201,169,98,.12), 0 8px 16px rgba(0,0,0,.2);
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(1.02);
+}
+.filters__btn:hover::after{
+  opacity: 1;
 }
 .filters__btn.is-active{
   border-color: rgba(201,169,98,.55);
@@ -977,6 +994,8 @@ body{
   align-items:center;
   justify-content:center;
   gap: 10px;
+  position: relative;
+  overflow: hidden;
   border-radius: 14px;
   padding: 13px 22px;
   text-decoration:none;
@@ -987,6 +1006,17 @@ body{
   cursor: pointer;
   transition: transform .3s var(--ease-out), border-color .3s var(--ease-out), box-shadow .35s var(--ease-out), background .3s var(--ease-out), color .3s var(--ease-out);
   user-select: none;
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0);
+}
+.btn::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(212,175,55,.18);
+  opacity: 0;
+  transition: opacity .28s var(--ease-out), border-color .28s var(--ease-out);
+  pointer-events: none;
 }
 .btn--primary{
   background: linear-gradient(135deg, rgba(201,169,98,.95) 0%, rgba(168, 138, 75, .98) 100%);
@@ -996,7 +1026,7 @@ body{
 }
 .btn--primary:hover{
   box-shadow: 0 8px 36px rgba(201,169,98,.35);
-  transform: translateY(-1px);
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(1.03);
 }
 .btn--secondary{
   background: rgba(255,255,255,.04);
@@ -1004,10 +1034,15 @@ body{
 }
 .btn--secondary:hover{
   border-color: rgba(201,169,98,.35);
-  box-shadow: 0 0 28px rgba(201,169,98,.1);
+  box-shadow: 0 0 28px rgba(201,169,98,.1), 0 8px 22px rgba(0,0,0,.22);
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(1.02);
 }
 .btn--full{ width: 100%; }
-.btn:active{ transform: translateY(0) scale(.98); }
+.btn:hover::after{
+  opacity: 1;
+  border-color: rgba(246,226,122,.42);
+}
+.btn:active{ transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(.97); }
 
 .link{
   display: inline-block;
@@ -1498,6 +1533,21 @@ body{
     transform: none !important;
     box-shadow: 0 12px 32px rgba(212,175,55,.18);
     background-position: 0% 50%;
+  }
+  .btn,
+  .filters__btn{
+    transform: none !important;
+    transition: none !important;
+  }
+  .btn::after,
+  .filters__btn::after{
+    transition: none !important;
+    opacity: 0 !important;
+  }
+  .btn:hover,
+  .btn:active,
+  .filters__btn:hover{
+    transform: none !important;
   }
   html{ scroll-behavior: auto; }
   .reveal{
