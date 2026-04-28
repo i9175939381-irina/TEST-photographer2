@@ -1,6 +1,17 @@
 (() => {
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const EMAIL_TO = "mik-viktor@yandex.ru";
+  const FORMSUBMIT_AJAX_URL = `https://formsubmit.co/ajax/${EMAIL_TO}`;
+  const EMAILJS_CONFIG = {
+    // Заполните после создания EmailJS-проекта:
+    // publicKey: "YOUR_PUBLIC_KEY",
+    // serviceId: "YOUR_SERVICE_ID",
+    // templateId: "YOUR_TEMPLATE_ID",
+    publicKey: "",
+    serviceId: "",
+    templateId: "",
+  };
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -316,6 +327,66 @@
 
   // Contact form
   const contactForm = $("#contactForm");
+  const hasEmailJsConfig =
+    EMAILJS_CONFIG.publicKey.trim() &&
+    EMAILJS_CONFIG.serviceId.trim() &&
+    EMAILJS_CONFIG.templateId.trim();
+  const canUseEmailJs = hasEmailJsConfig && !!window.emailjs;
+
+  if (canUseEmailJs) {
+    try {
+      window.emailjs.init({
+        publicKey: EMAILJS_CONFIG.publicKey,
+      });
+    } catch (err) {
+      // Ignore init error here; fallback chain below will handle delivery.
+    }
+  }
+
+  const buildMailtoLink = ({ name, email, message }) => {
+    const subject = "Новая заявка с сайта фотографа";
+    const body =
+      `Имя: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Сообщение:\n${message}\n`;
+    return `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const sendViaEmailJs = async ({ name, email, message }) => {
+    if (!canUseEmailJs) throw new Error("EmailJS not configured");
+    return window.emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+      name,
+      email,
+      message,
+      to_email: EMAIL_TO,
+    });
+  };
+
+  const sendViaFormSubmit = async ({ name, email, message, _subject }, signal) => {
+    const response = await fetch(FORMSUBMIT_AJAX_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      signal,
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        _subject,
+        _captcha: "false",
+        _template: "table",
+      }),
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json().catch(() => ({}));
+    if (String(data.success || "").toLowerCase() !== "true") {
+      throw new Error("FormSubmit rejected message");
+    }
+    return data;
+  };
+
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -333,33 +404,33 @@
         email: String(formData.get("email") || ""),
         message: String(formData.get("message") || ""),
         _subject: String(formData.get("_subject") || "Новая заявка с сайта фотографа"),
-        _captcha: "false",
-        _template: "table",
       };
 
       const controller = new AbortController();
       const timeoutId = window.setTimeout(() => controller.abort(), 12000);
       try {
-        const response = await fetch("https://formsubmit.co/ajax/mik-viktor@yandex.ru", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(payload),
-          signal: controller.signal,
-        });
-
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (canUseEmailJs) {
+          await sendViaEmailJs(payload);
+        } else {
+          await sendViaFormSubmit(payload, controller.signal);
+        }
 
         alert("Сообщение отправлено. Спасибо! Я свяжусь с вами в ближайшее время.");
         contactForm.reset();
       } catch (err) {
         const statusMessage = err && err.message ? ` (${err.message})` : "";
-        alert(
-          `Не удалось отправить сообщение через форму${statusMessage}. ` +
-            "Сервис отправки временно недоступен. Попробуйте позже или свяжитесь по почте mik-viktor@yandex.ru / телефону +7 (985) 997-54-72."
-        );
+        try {
+          window.location.href = buildMailtoLink(payload);
+          alert(
+            `Не удалось отправить сообщение через форму${statusMessage}. ` +
+              "Открылось письмо в вашей почтовой программе — отправьте его, и заявка точно дойдёт Виктору."
+          );
+        } catch (_) {
+          alert(
+            `Не удалось отправить сообщение через форму${statusMessage}. ` +
+              "Пожалуйста, напишите напрямую: mik-viktor@yandex.ru или позвоните: +7 (985) 997-54-72."
+          );
+        }
       } finally {
         window.clearTimeout(timeoutId);
         if (submitBtn) {
