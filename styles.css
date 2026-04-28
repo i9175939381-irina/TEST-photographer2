@@ -945,6 +945,16 @@ body{
   margin-bottom: 18px;
 }
 .contact-card{ margin-bottom: 12px; }
+.contact-card--business{
+  margin-bottom: 18px;
+}
+.contact-card__text{
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 54ch;
+}
 .social-links{
   display: flex;
   flex-wrap: wrap;
@@ -1326,6 +1336,10 @@ body{
   }
   .contact__form{
     padding: 18px 14px;
+  }
+  .contact-card__text{
+    font-size: 14px;
+    line-height: 1.5;
   }
   .info-card{
     padding: 14px 14px;
