@@ -7,8 +7,6 @@
   // Welcome
   const welcome = $("#welcome");
   const welcomeEnter = $("#welcomeEnter");
-  const welcomeToContact = $("#welcomeToContact");
-  const welcomeRemember = $("#welcomeRemember");
   const welcomeCloseEls = $$("[data-welcome-close]");
   const WELCOME_STORAGE_KEY = "welcome-hidden";
 
@@ -38,18 +36,31 @@
 
   welcomeCloseEls.forEach((el) => {
     el.addEventListener("click", () => {
-      closeWelcome({ remember: !!(welcomeRemember && welcomeRemember.checked) });
+      closeWelcome();
     });
   });
   if (welcomeEnter) {
     welcomeEnter.addEventListener("click", () => {
-      closeWelcome({ remember: !!(welcomeRemember && welcomeRemember.checked) });
+      closeWelcome();
     });
   }
-  if (welcomeToContact) {
-    welcomeToContact.addEventListener("click", () => {
-      closeWelcome({ remember: !!(welcomeRemember && welcomeRemember.checked) });
+
+  if (welcomeEnter && !prefersReducedMotion) {
+    const resetWelcomeCta = () => {
+      welcomeEnter.style.setProperty("--mx", "0px");
+      welcomeEnter.style.setProperty("--my", "0px");
+    };
+
+    welcomeEnter.addEventListener("mousemove", (e) => {
+      const rect = welcomeEnter.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = Math.max(-6, Math.min(6, (e.clientX - cx) * 0.12));
+      const dy = Math.max(-6, Math.min(6, (e.clientY - cy) * 0.12));
+      welcomeEnter.style.setProperty("--mx", `${dx.toFixed(2)}px`);
+      welcomeEnter.style.setProperty("--my", `${dy.toFixed(2)}px`);
     });
+    welcomeEnter.addEventListener("mouseleave", resetWelcomeCta);
   }
 
   // Theme
@@ -125,7 +136,7 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (welcome && welcome.classList.contains("is-open")) {
-          closeWelcome({ remember: !!(welcomeRemember && welcomeRemember.checked) });
+          closeWelcome();
         } else {
           closeModal();
         }

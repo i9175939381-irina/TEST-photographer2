@@ -111,64 +111,75 @@ body{
 }
 .welcome__panel{
   position: relative;
-  width: min(720px, calc(100% - 28px));
-  margin: 10vh auto 0;
-  border-radius: 22px;
-  border: 1px solid var(--border);
-  background: rgba(12, 14, 18, .92);
+  width: min(760px, calc(100% - 28px));
+  min-height: min(72vh, 680px);
+  margin: 8vh auto 0;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(12, 14, 18, .88);
   box-shadow: var(--shadow);
-  padding: 26px 22px 20px;
-}
-.welcome__badge{
-  display: inline-flex;
+  padding: clamp(40px, 7vw, 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--muted);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+  text-align: center;
 }
 .welcome__title{
-  margin: 14px 0 10px;
-  font-size: clamp(26px, 3.2vw, 34px);
-  font-weight: 600;
-  letter-spacing: -.02em;
+  margin: 0;
+  max-width: 8ch;
+  font-family: "Playfair Display", serif;
+  font-size: 64px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  animation: welcomeFadeUp .7s var(--ease-out) both;
 }
 .welcome__text{
-  margin: 0 0 18px;
-  color: var(--muted);
-  font-weight: 500;
-  max-width: 52ch;
+  margin: 20px 0 0;
+  max-width: 28ch;
+  color: rgba(255,255,255,.7);
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 450;
+  animation: welcomeFadeUp .7s var(--ease-out) .2s both;
 }
 .welcome__actions{
+  width: 100%;
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
+  justify-content: flex-end;
+  margin-top: 40px;
+  animation: welcomeFadeUp .7s var(--ease-out) .4s both;
 }
-.welcome__remember{
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--muted);
-  font-weight: 500;
-  font-size: 14px;
-  user-select: none;
+.welcome__cta{
+  border: 0;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 16px;
+  color: #1a1a1a;
+  background: linear-gradient(135deg, #d4af37, #f6e27a);
+  box-shadow: 0 12px 32px rgba(212,175,55,.18);
+  transition:
+    transform .26s var(--ease-out),
+    box-shadow .3s var(--ease-out),
+    background-position .35s var(--ease-out);
+  background-size: 160% 160%;
+  background-position: 0% 50%;
+  will-change: transform;
 }
-.welcome__checkbox{
-  width: 18px;
-  height: 18px;
-  accent-color: var(--accent);
+.welcome__cta:hover{
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(1.05);
+  box-shadow: 0 16px 40px rgba(212,175,55,.28), 0 0 24px rgba(246,226,122,.16);
+  background-position: 100% 50%;
+}
+.welcome__cta:active{
+  transform: translate3d(var(--mx, 0px), var(--my, 0px), 0) scale(.97);
 }
 .welcome__close{
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 14px;
+  right: 14px;
   width: 42px;
   height: 42px;
   border-radius: 14px;
@@ -184,9 +195,22 @@ body{
   background: rgba(255,255,255,.94);
   border-color: var(--border);
 }
+[data-theme="light"] .welcome__text{
+  color: rgba(26,29,36,.7);
+}
 [data-theme="light"] .welcome__close{
   background: rgba(255,255,255,.9);
   color: #1a1d24;
+}
+@keyframes welcomeFadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .site-header{
@@ -1221,6 +1245,23 @@ body{
   .manifest__line{ font-size: 22px; }
 }
 @media (max-width: 560px){
+  .welcome__panel{
+    min-height: min(78vh, 640px);
+    margin-top: 6vh;
+    padding: 34px 22px;
+  }
+  .welcome__title{
+    font-size: 42px;
+  }
+  .welcome__text{
+    font-size: 16px;
+  }
+  .welcome__actions{
+    justify-content: center;
+  }
+  .welcome__cta{
+    width: auto;
+  }
   .nav{ display:none; }
   .header-inner{
     padding: 12px 0;
@@ -1364,6 +1405,20 @@ body{
 }
 
 @media (prefers-reduced-motion: reduce){
+  .welcome__title,
+  .welcome__text,
+  .welcome__actions{
+    animation: none !important;
+  }
+  .welcome__cta{
+    transition: none !important;
+  }
+  .welcome__cta:hover,
+  .welcome__cta:active{
+    transform: none !important;
+    box-shadow: 0 12px 32px rgba(212,175,55,.18);
+    background-position: 0% 50%;
+  }
   html{ scroll-behavior: auto; }
   .reveal{
     opacity: 1;
