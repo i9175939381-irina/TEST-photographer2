@@ -572,6 +572,13 @@ body{
   max-width: 52ch;
   font-weight: 450;
 }
+.section-subtitle--center{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.section-subtitle--top-gap{ margin-top: 14px; }
+.section-subtitle--small-gap{ margin-top: 8px; }
 .gallery-intro{ max-width: 46ch; }
 
 .filters{
@@ -753,6 +760,7 @@ body{
   font-size: 17px;
   max-width: 62ch;
 }
+.about__text--top-gap{ margin-top: 16px; }
 .about__text--lead{
   color: rgba(255,255,255,.9);
   font-size: 18px;
@@ -1204,13 +1212,141 @@ body{
 }
 @media (max-width: 560px){
   .nav{ display:none; }
+  .header-inner{
+    padding: 12px 0;
+    gap: 10px;
+  }
+  .brand__text{
+    font-size: 16px;
+  }
+  .header-cta .btn{
+    padding: 10px 14px;
+    font-size: 13px;
+  }
   .hero{ padding-top: 40px; }
-  .hero__title{ font-size: 42px; }
+  .hero__title{
+    font-size: 34px;
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+  .hero__lead{
+    font-size: 17px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  .hero__desc{
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .hero__actions{
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .hero__actions .btn{
+    width: 100%;
+  }
+  .hero__location{
+    font-size: 12px;
+    letter-spacing: .05em;
+  }
+  .section{
+    padding: 52px 0;
+  }
+  .section-title{
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  .section-subtitle{
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .trust-card__inner{
+    min-height: 96px;
+    padding: 18px 16px;
+  }
+  .trust-card__title{
+    font-size: 17px;
+    margin-bottom: 0;
+  }
+  .manifest__line{
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .about-block--panel,
+  .about-block--card,
+  .about-block--quote{
+    padding: 20px 16px;
+  }
+  .about-block__title{
+    font-size: 24px;
+  }
+  .about__text{
+    font-size: 15px;
+    line-height: 1.62;
+    margin-bottom: 14px;
+    max-width: 32ch;
+  }
+  .about__text--lead{
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  .about__text br{
+    display: none;
+  }
+  .about-block--panel .section-title{
+    margin-bottom: 14px;
+  }
+  .steps-list{
+    font-size: 15px;
+    line-height: 1.6;
+    padding-left: 20px;
+  }
+  .steps-note{
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .result-quote{
+    font-size: 23px;
+    line-height: 1.42;
+    letter-spacing: -.01em;
+  }
+  .section-subtitle--center{
+    max-width: 30ch;
+  }
+  .manifest.gold-frame{
+    padding: 24px 16px;
+  }
+  .mini-card{
+    padding: 18px 16px;
+  }
+  .contact{
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .contact__form{
+    padding: 18px 14px;
+  }
+  .info-card{
+    padding: 14px 14px;
+  }
+  .messenger-grid{
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .messenger-card__img{
+    max-width: 120px;
+  }
   .photo-grid{ grid-template-columns: 1fr; }
   .field-row{ grid-template-columns: 1fr; }
   .trust-grid{ grid-template-columns: 1fr; }
   .cta-row{ flex-direction: column; }
   .cta-row .btn{ width: 100%; }
+  .theme-toggle{
+    right: 12px;
+    bottom: 12px;
+    width: 46px;
+    height: 46px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
