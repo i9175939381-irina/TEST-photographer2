@@ -341,7 +341,7 @@
 
     const startReviewsAutoplay = () => {
       if (prefersReducedMotion || reviewsTimer) return;
-      reviewsTimer = window.setInterval(nextReview, 6800);
+      reviewsTimer = window.setInterval(nextReview, 12000);
     };
 
     if (reviewsNext) {
